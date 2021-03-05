@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block content%}
+<style>
+    .table{
+        font-size: large;
+        font-weight: 300;
+    }
+</style>
+<div style="margin-right:42%; margin-top:5%;">
+<br>
+<h1 style="margin-left: 20%;">LOGIN</h1>
+<br>
+
+<form style="text-align: right;">
+    <div class="table">
+        ID
+        <input name="username" type="text" value="" style="margin-left: 10pt;">
+        <br>
+        <br>
+        PASSWORD
+        <input name="password" type="password" value="" style="margin-left: 10pt;">
+        <br>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Login" style="background-color: rgb(59, 59, 59); border-color: white;">
+    </div>
+</form>
+</div>
+{%endblock%}
