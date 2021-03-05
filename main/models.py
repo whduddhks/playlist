@@ -4,6 +4,7 @@ from django.db import models
 
 class Myplaylist(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
+    writer = models.CharField(max_length=50, null=False, blank=False)
     date = models.DateTimeField()
     body = models.TextField(null=False, blank=False)
     list_type = models.CharField(max_length=50, null=False, blank=False)

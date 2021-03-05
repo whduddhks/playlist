@@ -2,87 +2,61 @@
 
 {% block content %}
     <div class="container" style="margin-top: 75px;">
+        <h1> Hot한 플레이리스트</h1>
         <div class="row">
             <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">제목</a>
-                                </h4>
-                                <h5>글쓴이</h5>
-                                <p class="card-text">설명</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">테마 : <br> 찜 : </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">제목</a>
-                                </h4>
-                                <h5>글쓴이</h5>
-                                <p class="card-text">설명</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">테마 : <br> 찜 : </small>
+                    {% for play in playlist %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="{% url 'detail' play.id %}">{{ play.title }}</a>
+                                    </h4>
+                                    <h5>{{ play.writer }}</h5>
+                                    <p class="card-text">{{ play.body }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">유형 : {{ play.list_type }}<br> 장르 : {{ play.list_genre }}<br> 찜 : </small>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">제목</a>
-                                </h4>
-                                <h5>글쓴이</h5>
-                                <p class="card-text">설명</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">테마 : <br> 찜 : </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">제목</a>
-                                </h4>
-                                <h5>글쓴이</h5>
-                                <p class="card-text">설명</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">테마 : <br> 찜 : </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="#">제목</a>
-                                </h4>
-                                <h5>글쓴이</h5>
-                                <p class="card-text">설명</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">테마 : <br> 찜 : </small>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    {% endfor %}
                 </div>
             </div>
         </div>
+        <h1> 나의 플레이리스트</h1>
+        {% if user.is_authenticated %}
+        <div class="row">
+            <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                <div class="row">
+                    {% if my_playlist %}
+                        {% for my_play in my_playlist %}
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="{% url 'detail' my_play.id%}">{{ my_play.title }}</a>
+                                        </h4>
+                                        <h5>{{ my_play.write }}</h5>
+                                        <p class="card-text">{{ my_play.body }}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">유형 : {{ my_play.list_type }} <br> 장르 : {{ my_play.list_genre }} <br> 찜 : </small>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h1><a href="{% url 'write' %}">나의 플레이리스트 만들기</a></h1>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+            <h1>로그인해주세요</h1>
+        {% endif %}
     </div>
 {% endblock %}
