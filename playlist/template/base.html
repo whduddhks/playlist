@@ -22,15 +22,15 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'write' %}">Write</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Profil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'write' %}">글쓰기</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile'%}">프로필</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">로그아웃</a>
+                    </li>
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">LogIn</a>

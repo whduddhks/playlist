@@ -8,7 +8,7 @@
 </style>
 <div style="margin-right:42%; margin-top:5%;">
 <br>
-<h1 style="margin-left: 20%;">LOGIN</h1>
+<h1 style="margin-left: 20%;">로그인</h1>
 <br>
 
 <form style="text-align: right;" method="POST" action="{% url 'login' %}">
@@ -21,7 +21,8 @@
         <input name="password" type="password" value="" style="margin-left: 10pt;">
         <br>
         <br>
-        <input class="btn btn-primary" type="submit" value="Login" style="background-color: rgb(59, 59, 59); border-color: white;">
+        <input class="btn btn-primary" type="submit" value="로그인" style="background-color: rgb(59, 59, 59); border-color: rgb(59, 59, 59); margin-right: 5pt;">
+        <input class="btn btn-primary" type="button" value="회원가입" style="background-color:rgb(59,59,59); border-color: rgb(59,59,59);" onclick="location.href='/signup'">
     </div>
 </form>
 </div>

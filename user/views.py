@@ -5,10 +5,9 @@ from django.contrib import auth
 def signup(request):
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
-            user = User.objects.create_user(
-                request.POST['username'], password=request.POST['password1'])
+            user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
             auth.login(request, user)
-            return redirect('blog')
+            return redirect('home')
     return render(request, 'signup.html')
 
 def login(request):
@@ -23,3 +22,9 @@ def login(request):
             return render(request, 'login.html', {'error': '아이디나 비밀번호를 잘못 입력하셨습니다.'})
     else:
         return render(request, 'login.html')
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        redirect('home')
+    return render(request,'login.html')
