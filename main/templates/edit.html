@@ -28,11 +28,11 @@
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="title" class="form-label">제목</label>
-                            <input type="text" class="form-control" id="title" name="title">
+                            <input type="text" class="form-control" id="title" name="title" value="{{ edit_playlist.title }}">
                         </div>
                         <div class="form-group col-md-6"> <!-- State Button -->
                             <label for="type" class="control-label">유형</label>
-                            <select class="form-control" id="type" name="type">
+                            <select class="form-control" id="type" name="type" value="{{ edit_playlist.list_type }}">
                                 <option value="youtube">유튜브</option>
                                 <option value="movie">영화</option>
                                 <option value="song">노래</option>
@@ -42,15 +42,15 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="genre" class="form-label">장르</label>
-                            <input type="text" class="form-control" id="genre" name="genre" placeholder="발라드, SF, Vlog 등">
+                            <input type="text" class="form-control" id="genre" name="genre" placeholder="발라드, SF, Vlog 등" value="{{ edit_playlist.list_genre}}">
                         </div>
                         <div class="form-group col-12">
                             <label for="body" class="form-label">설명</label>
-                            <textarea class="form-control" id="body" name="body"></textarea>
+                            <textarea class="form-control" id="body" name="body">{{ edit_playlist.body }}</textarea>
                         </div>
-                        <div class="form-group col-12">
+                        <div class="form-group col-12"> 
                             <label class="form-label" for="image">대표 사진</label>
-                            <input type="file" class="form-control" id="image" name="image">
+                            <input type="file" class="form-control" id="image" name="image" value="{{ edit_playlist.list_image.name }}">
                         </div>
                         <div class="form-group col-12">
                             <label class="form-label" for="image">플레이리스트 목록</label>
