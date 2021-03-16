@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container" style="margin-top: 75px;">
+        <div class="row">
+            <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                <div class="row">
+                    {% for play in playlist %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <a href="{% url 'detail' play.id %}"><img class="card-img-top" src="{{ play.list_image.url }}" alt=""></a>
+                                <div class="card-body">
+                                    <h3 class="card-title">
+                                        <a href="{% url 'detail' play.id %}">{{ play.title }}</a>
+                                    </h3>
+                                    <h5>작성자 : {{ play.writer }}</h5>
+                                    <p class="card-text">{{ play.body }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">유형 : {{ play.list_type }}<br> 장르 : {{ play.list_genre }}<br> 찜 : </small>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
