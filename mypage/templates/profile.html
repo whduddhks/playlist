@@ -1,13 +1,18 @@
 {%extends 'base.html'%}
 {%block content%}
+import user.views
 <style>
-    .table{
-        font-size: large;
-        font-weight: 300;
-    }
+
 </style>
 <div style="margin-right:42%; margin-top:5%;">
 <br>
 <h1 style="margin-left: 20%;">프로필</h1>
+<div style="margin-left:25%;font-size: 25pt;margin-top:5%;font-weight: 600;">{{user.username}} </div>
+<div style="width:120%; height:7%; border-radius: 2px; border-color: black; border-style: solid; margin-left: 25%; border-width: 2px; margin-top: 0%;font-weight: 600;">
+    
+    <div style="text-align: left; font-size: 18pt;font-weight: 300;margin-left: 20pt; margin-top: 2pt;">   
+        소개: {{user.email}}
+</div>
+</div>
 </div>
 {%endblock%}
