@@ -11,4 +11,5 @@ urlpatterns = [
     path('like/<int:like_playlist_id>', views.like, name="like"),
     path('edit/<int:edit_playlist_id>', views.edit, name="edit"),
     path('update/<int:update_playlist_id', views.update, name="update"),
+    path('writecomment/<int:comment_id>', views.writecomment, name="writecomment"),
 ]
