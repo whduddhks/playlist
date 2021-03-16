@@ -14,11 +14,10 @@
                                     <h3 class="card-title">
                                         <a href="{% url 'detail' play.id %}">{{ play.title }}</a>
                                     </h3>
-                                    <h5>작성자 : {{ play.writer }}</h5>
                                     <p class="card-text">{{ play.body }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <small class="text-muted">작성일 : {{ play.date }} <br> 유형 : {{ play.list_type }} <br> 장르 : {{ play.list_genre }} <br> 찜 : {{ play.like }}</small>
+                                    <small class="text-muted">작성일 : {{ play.date }} <br> 작성자 : {{ my_play.writer }} <br> 유형 : {{ play.list_type }} <br> 장르 : {{ play.list_genre }} <br> 찜 : {{ play.like }}</small>
                                 </div>
                             </div>
                         </div>
@@ -42,11 +41,10 @@
                                     <h3 class="card-title">
                                         <a href="{% url 'detail' my_play.id %}">{{ my_play.title }}</a>
                                     </h3>
-                                    <h5>작성자: {{ my_play.writer }}</h5>
                                     <p class="card-text">{{ my_play.body }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <small class="text-muted">작성일 : {{ my_play.date }} <br> 유형 : {{ my_play.list_type }} <br> 장르 : {{ my_play.list_genre }} <br> 찜 : {{ my_play.like }}</small>
+                                    <small class="text-muted">작성일 : {{ my_play.date }} <br> 작성자 : {{ my_play.writer }} <br> 유형 : {{ my_play.list_type }} <br> 장르 : {{ my_play.list_genre }} <br> 찜 : {{ my_play.like }}</small>
                                 </div>
                             </div>
                         </div>

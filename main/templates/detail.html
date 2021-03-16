@@ -6,13 +6,12 @@
             <img src="{{ playlist_detail.list_image.url }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title">{{ playlist_detail.title }}</h2>
-                <h5 class="card-subtitle">작성자: {{ play.writer }}</h5>
                 <p class="card-text">{{ playlist_detail.body }}</p>
-                <p class="card-text"><small class="text-muted">작성일 : {{ playlist_detail.date }} <br> 유형 : {{ playlist_detail.list_type }}  <br> 장르 : {{ playlist_detail.list_genre }} <br> 찜 : {{ playlist_detail.like }}</small></p>
+                <p class="card-text"><small class="text-muted">작성일 : {{ playlist_detail.date }} <br> 작성자 : {{ playlist_detail.writer }} <br> 유형 : {{ playlist_detail.list_type }}  <br> 장르 : {{ playlist_detail.list_genre }} <br> 찜 : {{ playlist_detail.like }}</small></p>
             </div>
             {% if user.username == playlist_detail.writer %}
                 <div class="card-footer" style="text-align: right;">
-                    <small class="text-muted"><a href="{% url 'edit' playlist_detail.id %}">수정하기</a> <a href="{% url 'delete' playlist_detail.id %}">삭제하기</a></small>
+                    <small class="text-muted"><a href="{% url 'edit' playlist_detail.id %}" style="padding-right: 10px;">수정하기</a><a href="{% url 'delete' playlist_detail.id %}">삭제하기</a></small>
                 </div>
             {% else %}
                 <div class="card-footer" style="text-align: center;">
@@ -31,6 +30,34 @@
                     </small>
                 </div>
             {% endif %}
+            <div class="card-footer" style="text-align: right;">
+                <small class="text-muted">
+                    <form action="{% url 'writecomment' playlist_detail.id %}" method="POST">
+                        {% csrf_token %} 
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="댓글" id="floatingTextarea" name='content'></textarea>
+                            <input type="submit" value="댓글 달기">
+                        </div>
+                    </form>
+                </small>
+            </div>
+        </div>
+        <div class="row">
+            {% for comment in comments %}
+            <div class="card border-secondary col-lg-3 col-md-3 mb-4">
+                <div class="card-header">{{comment.writer}}</div>
+                <div class="card-body text-secondary">
+                    <p class="card-text">
+                        {{comment.content}}
+                    </p>
+                    <div style="text-align: right;">
+                        {% if user.username == comment.writer %}
+                            <a href="">삭제하기</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
         </div>
     </div>
 {% endblock %}

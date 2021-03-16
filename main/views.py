@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Myplaylist  
+from .models import Myplaylist, Comment  
 
 # Create your views here.
 
@@ -14,8 +14,9 @@ def home(request):
 
 
 def detail(request,detail_id):
-    detail = get_object_or_404(Myplaylist, pk=detail_id)
-    return render(request, "detail.html", {'playlist_detail':detail})
+    detail = get_object_or_404(Myplaylist, pk = detail_id)
+    comments = Comment.objects.filter(point = detail_id)
+    return render(request, "detail.html", {'playlist_detail':detail, 'comments':comments})
 
 
 def write(request):
@@ -79,3 +80,12 @@ def like(request, like_playlist_id):
         like_playlist.like += 1
     like_playlist.save()
     return redirect('/main/detail/' + str(like_playlist_id))
+
+
+def writecomment(request, comment_id):
+    comment = Comment()
+    comment.writer = request.user.username
+    comment.content = request.POST['content']
+    comment.point = get_object_or_404(Myplaylist, pk=comment_id)
+    comment.save()
+    return redirect('/main/detail/' + str(comment_id))

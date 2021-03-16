@@ -22,3 +22,9 @@ class Myplaylist(models.Model):
         
     def summary(self):
         return self.body[:100]
+
+
+class Comment(models.Model):
+    writer=models.CharField(max_length=200)
+    content=models.TextField()
+    point=models.ForeignKey(Myplaylist, on_delete=models.CASCADE) 
