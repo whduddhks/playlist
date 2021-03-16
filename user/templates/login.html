@@ -12,6 +12,7 @@
 <br>
 
 <form style="text-align: right;" method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
     <div class="table">
         ID
         <input name="username" type="text" value="" style="margin-left: 10pt;">

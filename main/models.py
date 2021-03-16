@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -11,6 +12,7 @@ class Myplaylist(models.Model):
     list_genre = models.CharField(max_length=50, null=False, blank=False) 
     list_play = models.CharField(max_length=50, null=False, blank=False)
     list_image = models.ImageField(null=False, upload_to = 'playlist/')
+    user=models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
