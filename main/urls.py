@@ -9,4 +9,6 @@ urlpatterns = [
     path('delete/<int:delete_pliatlist_id>', views.delete, name="delete"),
     path('search/', views.search, name="search"),
     path('like/<int:like_playlist_id>', views.like, name="like"),
+    path('edit/<int:edit_playlist_id>', views.edit, name="edit"),
+    path('update/<int:update_playlist_id', views.update, name="update"),
 ]

@@ -6,13 +6,13 @@
             <img src="{{ playlist_detail.list_image.url }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h2 class="card-title">{{ playlist_detail.title }}</h2>
-                <h5 class="card-subtitle">작성자: {{ playlist_detail.writer }}</h5>
+                <h5 class="card-subtitle">작성자: {{ play.writer }}</h5>
                 <p class="card-text">{{ playlist_detail.body }}</p>
                 <p class="card-text"><small class="text-muted">작성일 : {{ playlist_detail.date }} <br> 유형 : {{ playlist_detail.list_type }}  <br> 장르 : {{ playlist_detail.list_genre }} <br> 찜 : {{ playlist_detail.like }}</small></p>
             </div>
             {% if user.username == playlist_detail.writer %}
                 <div class="card-footer" style="text-align: right;">
-                    <small class="text-muted"><a>수정하기</a> <a href="{% url 'delete' playlist_detail.id %}">삭제하기</a></small>
+                    <small class="text-muted"><a href="{% url 'edit' playlist_detail.id %}">수정하기</a> <a href="{% url 'delete' playlist_detail.id %}">삭제하기</a></small>
                 </div>
             {% else %}
                 <div class="card-footer" style="text-align: center;">

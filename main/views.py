@@ -45,12 +45,23 @@ def delete(request,delete_pliatlist_id):
     return redirect("home")
 
 
-def edit(request):
-    return redirect("home")
+def edit(request, edit_playlist_id):
+    edit_playlist = get_object_or_404(Myplaylist, pk=edit_playlist_id)
+    return render(request, 'edit.html', {'edit_playlist':edit_playlist})
 
 
-def update(request):
-    return redirect("home")
+def update(request, update_playlist_id):
+    update_playlist = get_object_or_404(Myplaylist, pk=update_playlist_id)
+    update_playlist.title = request.POST["title"]
+    update_playlist.writer = request.user.username
+    update_playlist.date = timezone.now()
+    update_playlistt.body = request.POST['body']
+    update_playlist.list_type = request.POST['type']
+    update_playlist.list_genre = request.POST['genre']
+    update_playlist.list_play = request.POST['play']
+    update_playlist.list_image = request.FILES['image']
+    update_playlist.save()
+    return redirect("/main/detail/" + str(update_playlist.id))
 
 
 def search(request):
